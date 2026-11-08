@@ -57,6 +57,47 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
   - Base de datos: quién aparece (solo Alberto o varias personas), fondos y luces (decidir al programar).
   - Cómo se hace el código y la base de datos de cartas y gestos.
 
+## Investigación (sesión 1) y propuesta técnica
+Propuesta de Claude, pendiente de depurar con Alberto.
+
+### Animaciones y capas (Pygame)
+- **Animación = secuencia de frames.** Se guardan en un *sprite sheet* (una imagen con todos los frames) y el juego cambia de frame cada X ms. Método estándar, con tutoriales sencillos.
+- **Capas = dibujar en orden:** fondo → oponente → manos → mesa → interfaz. Pygame lo hace sin herramientas especiales (también tiene grupos de sprites por capas).
+- **Animaciones por código (sin dibujar más frames):** mover 1–2 px arriba/abajo ("respirar"), desplazar la carta al sacarla, temblor al enfadarse. Coste muy bajo. Encaja con "animaciones modestas". (Técnica conocida por Claude, no sacada de una fuente.)
+- **Animaciones dibujadas:** solo pequeñas (p. ej. parpadeo de 2–3 frames). Las de gestos completos frame a frame cuestan más (sobre todo de dibujo).
+- **Aseprite** exporta cada capa por separado (CLI `--split-layers`/`{layer}`, `{tag}`, `{frame}`; formato JSON array). No hay ejemplo de carga en Pygame, pero el código es corto.
+
+### Proyectos parecidos
+- Muchos proyectos de **piedra-papel-tijera con webcam + MediaPipe** contra la máquina (= nuestra parte de gestos).
+- Idea útil: categoría **"lectura falsa / ningún gesto válido"**.
+- No se encontró ninguno que combine MediaPipe con una interfaz completa en Pygame: aportación propia del proyecto.
+
+### Gestos (MediaPipe: 21 puntos de la mano)
+| Opción | Cómo | Valoración |
+|---|---|---|
+| A. Reglas a mano | "si índice estirado y resto doblados → pistola" | Rápido, pero frágil y poco evaluable |
+| B. **Puntos + clasificador propio** | Guardar los 21 puntos de muchas fotos por gesto y entrenar un clasificador sencillo (scikit-learn: SVM / Random Forest) | **Recomendada.** CPU, sin GPU. Genera base de datos propia y evaluación (% acierto, matriz de confusión) |
+| C. Gesture Recognizer de Google reentrenado | Herramienta oficial con gestos nuevos | Más "caja negra", menos trabajo propio visible |
+
+### Cartas
+- Método habitual: 1) **encontrar el contorno** de la carta; 2) **enderezarla** (corrección de perspectiva); 3) **identificarla** con plantillas (*template matching*, algo rígido) o por color dominante + forma del símbolo.
+- Ventaja: las cartas son de diseño propio → 5 colores muy distintos + un símbolo cada una → basta **segmentación por color + contornos** (lo visto en clase). Evaluable por separado.
+- Riesgo: piel o ropa pueden confundir el color → probar con distintas luces y fondos.
+- Alternativa descartada como método principal: marcadores **ArUco** impresos (OpenCV los reconoce casi perfecto, pero quita mérito de visión).
+
+### Recomendación global
+- **Juego:** Pygame, oponente por capas, animaciones por código (respirar, mover carta) + algún parpadeo dibujado si da tiempo.
+- **Gestos:** MediaPipe + clasificador entrenado con nuestros datos (opción B).
+- **Cartas:** contornos + segmentación por color, con cartas diseñadas para facilitarlo.
+- **Evaluación:** separada para gestos y cartas: % acierto, matriz de confusión, pruebas con varias luces y personas.
+
+### Fuentes
+- Animación Pygame: https://pythonprogramming.altervista.org/sprite-animation-with-sprite-sheets/ · https://www.101computing.net/?p=22126 · https://gurubase.io/g/python/implementing-multiple-animations-in-pygame · https://gamedevacademy.org/pygame-sprite-tutorial-complete-guide/
+- Aseprite: https://www.aseprite.org/cli/ · https://community.aseprite.org/t/export-each-layer-of-a-file-in-a-different-sprite-sheet/2876 · https://mintlify.com/aseprite/aseprite/features/sprite-sheets
+- Gestos MediaPipe: https://developers.google.com/edge/mediapipe/solutions/vision/gesture_recognizer/python · https://instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe
+- Piedra-papel-tijera: https://github.com/freestyleabg/computer-vision-rock-paper-scissors · https://yashd-dev.vercel.app/posts/post1-rps · https://www.instructables.com/Rock-Paper-Scissors-With-Open-CV · https://awesome.ecosyste.ms/projects/github.com%2Fjakub-nowicki%2Frock-paper-scissors
+- Cartas: https://forum.opencv.org/t/using-template-matching-to-identify-playing-cards/3390 · https://forum.opencv.org/t/recognizing-playing-cards/17403 · https://www.preprints.org/manuscript/202301.0030
+
 ## Logística (TEMPORAL, pendiente de confirmar)
 "Decisión provisional: Alberto aún tiene que valorar si hace una partición de Linux."
 - **Dónde programar:** Windows directamente. VirtualBox descartado (mal acceso a la webcam y poca potencia). Partición Linux: no necesaria, pero pendiente de decidir.
@@ -88,4 +129,4 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - Grupo y fecha de entrega: no relevantes para el scope.
 
 ## Avances
-- Sesión 1 (scope): lectura del repositorio, definición del objetivo general y del apartado videojuego. En curso.
+- Sesión 1 (scope): lectura del repositorio, objetivo general, apartados videojuego y visión, logística, requisitos de la asignatura e investigación técnica. En curso (falta dividir el trabajo en bloques).
