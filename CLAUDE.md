@@ -38,7 +38,11 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
   - Enseñando cada una de las 5 cartas.
   - Haciendo cada una de las 5 acciones.
   - Estados de ánimo variados: pensando, enfadado, alegre, aburrido, etc.
-- Se dedicará una sesión entera a crear los estados del pixel art y el fondo.
+- Se dedicará una sesión entera a crear los estados del pixel art y el fondo. En esa sesión se deciden también el fondo y el formato/tamaño del modelo. El `.md` resultado de esa sesión se subirá al repo.
+- **Oponente por capas:** pose base + capa de mano con carta + capa de mano con gesto (sin repetir combinaciones).
+- **Poses extra:** 1 o 2 poses base modestas (p. ej. esperando a que el jugador elija, inicio/fin de partida).
+- **Animaciones:** muy modestas, si no cuestan mucho. Se decide al programar; si cuestan mucho, se prescinde.
+- **Webcam en pantalla:** sí, en una ventanita, para que el jugador vea si se le reconoce.
 
 ## Apartado 2: Visión por computador
 - Reconocer por webcam la carta (elemento) y el gesto (acción) del jugador.
@@ -46,7 +50,9 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - **Gestos:** fijos (posturas de mano, sin movimiento).
 - **Hardware:** webcam del portátil o el móvil como webcam (p. ej. apps tipo DroidCam/Iriun). Gráfica AMD Radeon (sin CUDA): si se entrena una red, hacerlo en CPU o con modelos ligeros.
 - **Pendientes de visión:**
-  - Técnicas: en clase se ha visto segmentación y contornos; seguramente se permitan más cosas (confirmar con el profesor).
+  - Técnicas: en clase se ha visto segmentación y contornos. MediaPipe (puntos de la mano) está permitido.
+  - Los 5 gestos concretos: por decidir.
+  - Diseño de las cartas (colores y símbolos): se decide junto con Claude.
   - Estabilidad: que solo cuente una detección si se mantiene ~1 s (decidir al programar).
   - Base de datos: quién aparece (solo Alberto o varias personas), fondos y luces (decidir al programar).
   - Cómo se hace el código y la base de datos de cartas y gestos.
@@ -66,17 +72,18 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - **Estructura del código (propuesta):** archivos separados para visión, lógica e interfaz, para hacerlos y probarlos en sesiones distintas.
 
 ## Preguntas abiertas
-1. ¿El oponente se dibuja por capas (cuerpo/cara + mano con carta + mano con gesto) para no dibujar 25 combinaciones? (Propuesta de Claude: sí, por capas.)
-2. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
-3. ¿Formato y tamaño (resolución) del modelo de pixel art?
-4. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
-5. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; pendiente de que Alberto decida.)
-6. Preguntar al profesor: ¿se pueden usar herramientas/modelos ya hechos o hay que usar técnicas vistas en clase?
+1. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; Alberto lo está pensando. Recomendación de Claude: Windows.)
+2. Formato y tamaño del pixel art, y fondo: se deciden en la sesión de pixel art.
+3. Animaciones: cuáles y cuántas, según lo que cueste programarlas.
+4. Los 5 gestos y el diseño de las cartas.
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
 - La jugada se confirma sola al detectar carta y gesto (orden indiferente).
 - Gestos fijos.
+- Oponente por capas + 1-2 poses base + animaciones modestas (si no cuestan mucho).
+- Webcam visible en pantalla en una ventanita.
+- MediaPipe permitido.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
 
