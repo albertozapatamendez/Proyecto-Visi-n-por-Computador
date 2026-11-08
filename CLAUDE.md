@@ -44,6 +44,18 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - **Animaciones:** muy modestas, si no cuestan mucho. Se decide al programar; si cuestan mucho, se prescinde.
 - **Webcam en pantalla:** sí, en una ventanita, para que el jugador vea si se le reconoce.
 
+### Objetivo de gráficos (fijado en sesión 1)
+- **Fondo:** fijo. Puede haber 1–2 fondos distintos (solo estéticos, p. ej. uno al azar por partida).
+- **Oponente:**
+  - **2–3 poses de espera** (sin capas de manos): esperando (manos no visibles), mano en la mesa, manos detrás de la cabeza…
+  - **1 pose de acción** por capas: cuerpo base + mano 1 con una de las 5 cartas + mano 2 con uno de los 5 gestos.
+  - **Cara:** capa aparte con varias emociones, común a todas las poses.
+- **Piezas a dibujar (aprox.):** 3–4 poses de cuerpo, 5 manos con carta, 5 manos con gesto, 4–6 caras, 1–2 fondos.
+- **Reglas de dibujo para que encaje:**
+  1. Todas las piezas al mismo tamaño de lienzo y alineadas (cada capa se coloca encima sin ajustar).
+  2. La cabeza en la misma posición en todas las poses (si cambia, caras propias para esa pose o desplazarlas por código).
+- **Animaciones modestas:** respirar (por código), parpadeo (dibujado, 2–3 frames), mover la carta al sacarla (por código).
+
 ## Apartado 2: Visión por computador
 - Reconocer por webcam la carta (elemento) y el gesto (acción) del jugador.
 - **Lógica de detección:** da igual el orden, la mano o si es simultáneo. El programa solo comprueba: ¿carta detectada? sí/no; ¿gesto detectado? sí/no. Cuando tiene ambos, se resuelve el turno.
@@ -122,7 +134,7 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - Cartas de diseño propio, muy distintivas.
 - La jugada se confirma sola al detectar carta y gesto (orden indiferente).
 - Gestos fijos.
-- Oponente por capas + 1-2 poses base + animaciones modestas (si no cuestan mucho).
+- Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
 - Webcam visible en pantalla en una ventanita.
 - MediaPipe permitido.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
