@@ -66,12 +66,12 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - **Estructura del código (propuesta):** archivos separados para visión, lógica e interfaz, para hacerlos y probarlos en sesiones distintas.
 
 ## Preguntas abiertas
-3. ¿El oponente se dibuja por capas (cuerpo/cara + mano con carta + mano con gesto) para no dibujar 25 combinaciones? (Propuesta de Claude: sí, por capas.)
-4. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
-5. ¿Formato y tamaño (resolución) del modelo de pixel art?
-6. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
-7. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; pendiente de que Alberto decida.)
-8. Preguntar al profesor: ¿se pueden usar herramientas/modelos ya hechos o hay que usar técnicas vistas en clase?
+1. ¿El oponente se dibuja por capas (cuerpo/cara + mano con carta + mano con gesto) para no dibujar 25 combinaciones? (Propuesta de Claude: sí, por capas.)
+2. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
+3. ¿Formato y tamaño (resolución) del modelo de pixel art?
+4. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
+5. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; pendiente de que Alberto decida.)
+6. Preguntar al profesor: ¿se pueden usar herramientas/modelos ya hechos o hay que usar técnicas vistas en clase?
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
