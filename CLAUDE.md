@@ -42,7 +42,14 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 
 ## Apartado 2: Visión por computador
 - Reconocer por webcam la carta (elemento) y el gesto (acción) del jugador.
-- (Pendiente de detallar por Alberto.)
+- **Lógica de detección:** da igual el orden, la mano o si es simultáneo. El programa solo comprueba: ¿carta detectada? sí/no; ¿gesto detectado? sí/no. Cuando tiene ambos, se resuelve el turno.
+- **Gestos:** fijos (posturas de mano, sin movimiento).
+- **Hardware:** webcam del portátil o el móvil como webcam (p. ej. apps tipo DroidCam/Iriun). Gráfica AMD Radeon (sin CUDA): si se entrena una red, hacerlo en CPU o con modelos ligeros.
+- **Pendientes de visión:**
+  - Técnicas: en clase se ha visto segmentación y contornos; seguramente se permitan más cosas (confirmar con el profesor).
+  - Estabilidad: que solo cuente una detección si se mantiene ~1 s (decidir al programar).
+  - Base de datos: quién aparece (solo Alberto o varias personas), fondos y luces (decidir al programar).
+  - Cómo se hace el código y la base de datos de cartas y gestos.
 
 ## Logística (TEMPORAL, pendiente de confirmar)
 "Decisión provisional: Alberto aún tiene que valorar si hace una partición de Linux."
@@ -59,8 +66,6 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - **Estructura del código (propuesta):** archivos separados para visión, lógica e interfaz, para hacerlos y probarlos en sesiones distintas.
 
 ## Preguntas abiertas
-1. ¿Carta y gesto se muestran a la vez o por separado?
-2. ¿Cómo se confirma la jugada? (mantener X segundos, tecla, etc.)
 3. ¿El oponente se dibuja por capas (cuerpo/cara + mano con carta + mano con gesto) para no dibujar 25 combinaciones? (Propuesta de Claude: sí, por capas.)
 4. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
 5. ¿Formato y tamaño (resolución) del modelo de pixel art?
@@ -70,6 +75,8 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
+- La jugada se confirma sola al detectar carta y gesto (orden indiferente).
+- Gestos fijos.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
 
