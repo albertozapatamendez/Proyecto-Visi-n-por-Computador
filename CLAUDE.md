@@ -22,6 +22,12 @@ El jugador elige su jugada mediante visión por computador:
 
 El proyecto se divide en dos grandes apartados: **videojuego** y **visión por computador**.
 
+## Requisitos de la asignatura (de `Instrucciones proyecto Visión por Computador.md`)
+- **Entregables:** memoria del proyecto + exposición oral en clase de prácticas. Guardar resultados y capturas desde el principio.
+- **Datos:** hay que crear base de datos propia (cartas y gestos son nuestros): fotos/vídeos de cartas y gestos, cada uno etiquetado. El profesor avisa de que esto es más complicado. Para gestos puede ayudar una herramienta existente de detección de mano (a decidir).
+- **Técnicas:** el profesor recomienda la metodología y asesora. Preguntarle pronto si permite herramientas ya hechas o prefiere técnicas vistas en clase.
+- **Evaluación (lo más importante):** no importa tanto acertar mucho como evaluar bien: % de acierto con imágenes no usadas para entrenar, qué cartas/gestos se confunden entre sí (matriz de confusión), pruebas con distinta luz y distintas personas. La nota depende sobre todo de la visión y su evaluación, no del juego.
+
 ## Apartado 1: Videojuego
 - La máquina elige elemento y acción al azar (ver reglas).
 - Interfaz: vista en primera persona (POV) de un jugador sentado a una mesa (casino/posada/escenario).
@@ -60,6 +66,7 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 5. ¿Formato y tamaño (resolución) del modelo de pixel art?
 6. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
 7. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; pendiente de que Alberto decida.)
+8. Preguntar al profesor: ¿se pueden usar herramientas/modelos ya hechos o hay que usar técnicas vistas en clase?
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
