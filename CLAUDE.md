@@ -38,6 +38,20 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - Reconocer por webcam la carta (elemento) y el gesto (acción) del jugador.
 - (Pendiente de detallar por Alberto.)
 
+## Logística (TEMPORAL, pendiente de confirmar)
+"Decisión provisional: Alberto aún tiene que valorar si hace una partición de Linux."
+- **Dónde programar:** Windows directamente. VirtualBox descartado (mal acceso a la webcam y poca potencia). Partición Linux: no necesaria, pero pendiente de decidir.
+- **Herramientas:** VS Code + Python + entorno virtual (venv). En clase se usa Python + OpenCV.
+- **Repositorio:** el código vive en este repo de GitHub; se clona en el PC y se trabaja ahí.
+- **Qué es el juego:** un programa Python local, sin internet ni servidor. Sin motor gráfico (nada de Unity/Godot): se usa la librería **Pygame** para la ventana y el dibujo.
+- **Llevarlo a otro PC:** copiar el proyecto e instalar librerías, o empaquetarlo en `.exe` con PyInstaller. Móvil/web fuera del alcance.
+- **Cómo se junta visión y juego:** todo en un mismo programa, en bucle:
+  1. OpenCV captura un fotograma de la webcam.
+  2. Módulo de visión: detecta carta y gesto.
+  3. Lógica del juego: aplica reglas (aciertos, vidas, puntos).
+  4. Pygame dibuja la pantalla (fondo, mesa, oponente y quizá ventanita de webcam).
+- **Estructura del código (propuesta):** archivos separados para visión, lógica e interfaz, para hacerlos y probarlos en sesiones distintas.
+
 ## Preguntas abiertas
 1. ¿Carta y gesto se muestran a la vez o por separado?
 2. ¿Cómo se confirma la jugada? (mantener X segundos, tecla, etc.)
@@ -45,7 +59,7 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 4. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
 5. ¿Formato y tamaño (resolución) del modelo de pixel art?
 6. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
-7. ¿Lenguaje/herramienta del juego? (Propuesta de Claude: Python + Pygame, todo junto con OpenCV.) ¿Alguna exigencia del profesor?
+7. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; pendiente de que Alberto decida.)
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
