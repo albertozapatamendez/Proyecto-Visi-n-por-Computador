@@ -43,12 +43,13 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 2. ¿Cómo se confirma la jugada? (mantener X segundos, tecla, etc.)
 3. ¿El oponente se dibuja por capas (cuerpo/cara + mano con carta + mano con gesto) para no dibujar 25 combinaciones? (Propuesta de Claude: sí, por capas.)
 4. ¿Imágenes fijas o animaciones (parpadeo, movimiento al pensar)?
-5. ¿Quién dibuja el pixel art y con qué programa? Claude no puede dibujar pixel art de calidad; recomendado que lo haga Alberto con Aseprite / Piskel / LibreSprite, y Claude prepara lista de piezas, tamaños y lo integra. ¿Formato y tamaño del modelo actual?
+5. ¿Formato y tamaño (resolución) del modelo de pixel art?
 6. ¿Se muestra la imagen de la webcam en pantalla (ventanita para ver si se reconoce bien)?
 7. ¿Lenguaje/herramienta del juego? (Propuesta de Claude: Python + Pygame, todo junto con OpenCV.) ¿Alguna exigencia del profesor?
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
+- Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
 
 ## Avances
