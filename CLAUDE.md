@@ -18,7 +18,7 @@ Hay que ampliar este CLAUDE.md para utilizarlo durante todo el proyecto, definie
 Juego por turnos contra la máquina, en tiempo real con webcam. Reglas completas en `reglas_juego.pdf`.
 El jugador elige su jugada mediante visión por computador:
 - **Elemento** (5): mostrando una carta impresa. Cartas de diseño propio, con color y símbolo muy distintivos para facilitar el reconocimiento.
-- **Acción** (5): haciendo un gesto con la mano (gestos aún sin definir; ejemplo: atacar = mano en forma de pistola).
+- **Acción** (5): haciendo un gesto con la mano (ver tabla de gestos en el apartado de visión).
 
 El proyecto se divide en dos grandes apartados: **videojuego** y **visión por computador**.
 
@@ -59,11 +59,18 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 ## Apartado 2: Visión por computador
 - Reconocer por webcam la carta (elemento) y el gesto (acción) del jugador.
 - **Lógica de detección:** da igual el orden, la mano o si es simultáneo. El programa solo comprueba: ¿carta detectada? sí/no; ¿gesto detectado? sí/no. Cuando tiene ambos, se resuelve el turno.
-- **Gestos:** fijos (posturas de mano, sin movimiento).
+- **Gestos:** fijos (posturas de mano, sin movimiento). Definidos:
+  | Acción | Gesto |
+  |---|---|
+  | Atacar | Puño cerrado |
+  | Defender | Palma abierta |
+  | Curarse | Pulgar hacia arriba |
+  | Huir | Dedos en V |
+  | Cargar | Índice arriba |
+  - Posibles confusiones a vigilar en la evaluación: puño ↔ pulgar arriba (solo cambia el pulgar) e índice arriba ↔ V (solo cambia un dedo).
 - **Hardware:** webcam del portátil o el móvil como webcam (p. ej. apps tipo DroidCam/Iriun). Gráfica AMD Radeon (sin CUDA): si se entrena una red, hacerlo en CPU o con modelos ligeros.
 - **Pendientes de visión:**
   - Técnicas: en clase se ha visto segmentación y contornos. MediaPipe (puntos de la mano) está permitido.
-  - Los 5 gestos concretos: por decidir.
   - Diseño de las cartas (colores y símbolos): se decide junto con Claude.
   - Estabilidad: que solo cuente una detección si se mantiene ~1 s (decidir al programar).
   - Base de datos: quién aparece (solo Alberto o varias personas), fondos y luces (decidir al programar).
@@ -128,12 +135,12 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 1. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; Alberto lo está pensando. Recomendación de Claude: Windows.)
 2. Formato y tamaño del pixel art, y fondo: se deciden en la sesión de pixel art.
 3. Animaciones: cuáles y cuántas, según lo que cueste programarlas.
-4. Los 5 gestos y el diseño de las cartas.
+4. El diseño de las cartas.
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
 - La jugada se confirma sola al detectar carta y gesto (orden indiferente).
-- Gestos fijos.
+- Gestos fijos: atacar = puño, defender = palma, curarse = pulgar arriba, huir = V, cargar = índice arriba.
 - Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
 - Webcam visible en pantalla en una ventanita.
 - MediaPipe permitido.
