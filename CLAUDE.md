@@ -65,9 +65,9 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
   | Atacar | Puño cerrado |
   | Defender | Palma abierta |
   | Curarse | Pulgar hacia arriba |
-  | Huir | Dedos en V |
+  | Huir | "Te quiero" 🤟 (índice, meñique y pulgar estirados; `ILoveYou` en MediaPipe) |
   | Cargar | Índice arriba |
-  - Posibles confusiones a vigilar en la evaluación: puño ↔ pulgar arriba (solo cambia el pulgar) e índice arriba ↔ V (solo cambia un dedo).
+  - Posibles confusiones a vigilar en la evaluación: puño ↔ pulgar arriba (solo cambia el pulgar) e índice arriba ↔ "te quiero" (comparten el índice estirado).
 - **Hardware:** webcam del portátil o el móvil como webcam (p. ej. apps tipo DroidCam/Iriun). Gráfica AMD Radeon (sin CUDA): si se entrena una red, hacerlo en CPU o con modelos ligeros.
 - **Pendientes de visión:**
   - Técnicas: en clase se ha visto segmentación y contornos. MediaPipe (puntos de la mano) está permitido.
@@ -140,7 +140,7 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
 - La jugada se confirma sola al detectar carta y gesto (orden indiferente).
-- Gestos fijos: atacar = puño, defender = palma, curarse = pulgar arriba, huir = V, cargar = índice arriba.
+- Gestos fijos: atacar = puño, defender = palma, curarse = pulgar arriba, huir = "te quiero" 🤟, cargar = índice arriba.
 - Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
 - Webcam visible en pantalla en una ventanita.
 - MediaPipe permitido.
