@@ -149,6 +149,11 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
 
+## Estructura del repositorio
+- `parte_vision/`: código de visión (parte C).
+- `parte_juego/`: código del juego (parte B).
+- `parte_grafica/`: pixel art y diseño de cartas (parte A).
+
 ## Plan de trabajo (partes y estado)
 Estados: ⬜ pendiente · 🟡 en curso · ✅ hecho. A, B y C se pueden hacer en paralelo; D y E al final.
 
