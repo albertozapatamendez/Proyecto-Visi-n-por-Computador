@@ -25,8 +25,8 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 
 ## Requisitos de la asignatura (de `Instrucciones proyecto Visión por Computador.md`)
 - **Entregables:** memoria del proyecto + exposición oral en clase de prácticas. Guardar resultados y capturas desde el principio.
-- **Datos:** hay que crear base de datos propia (cartas y gestos son nuestros): fotos/vídeos de cartas y gestos, cada uno etiquetado. El profesor avisa de que esto es más complicado. Para gestos puede ayudar una herramienta existente de detección de mano (a decidir).
-- **Técnicas:** el profesor recomienda la metodología y asesora. Preguntarle pronto si permite herramientas ya hechas o prefiere técnicas vistas en clase.
+- **Datos:** hay que crear base de datos propia (cartas y gestos son nuestros): fotos/vídeos de cartas y gestos, cada uno etiquetado. El profesor avisa de que esto es más complicado. Para gestos se usa MediaPipe (decidido).
+- **Técnicas:** el profesor recomienda la metodología y asesora. MediaPipe permitido y decidido.
 - **Evaluación (lo más importante):** no importa tanto acertar mucho como evaluar bien: % de acierto con imágenes no usadas para entrenar, qué cartas/gestos se confunden entre sí (matriz de confusión), pruebas con distinta luz y distintas personas. La nota depende sobre todo de la visión y su evaluación, no del juego.
 
 ## Apartado 1: Videojuego
@@ -34,24 +34,24 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
 - Interfaz: vista en primera persona (POV) de un jugador sentado a una mesa (casino/posada/escenario).
   - Franja inferior de la pantalla: la mesa.
   - Al otro lado, de frente, el personaje oponente en pixel art (Alberto ya tiene el modelo base).
-  - Fondo fijo (por decidir).
+  - Fondo fijo (decidido por Alberto; un único fondo).
 - Estados del oponente a crear:
   - Enseñando cada una de las 5 cartas.
   - Haciendo cada una de las 5 acciones.
   - Estados de ánimo variados: pensando, enfadado, alegre, aburrido, etc.
-- Se dedicará una sesión entera a crear los estados del pixel art y el fondo. En esa sesión se deciden también el fondo y el formato/tamaño del modelo. El `.md` resultado de esa sesión se subirá al repo.
+- Se dedicará una sesión entera a crear los estados del pixel art y el fondo. En esa sesión se decide el formato/tamaño del modelo. El `.md` resultado de esa sesión se subirá al repo.
 - **Oponente por capas:** pose base + capa de mano con carta + capa de mano con gesto (sin repetir combinaciones).
-- **Poses extra:** 1 o 2 poses base modestas (p. ej. esperando a que el jugador elija, inicio/fin de partida).
+- **Poses de espera:** 2 o 3 (confirmado). Ver "Objetivo de gráficos".
 - **Animaciones:** muy modestas, si no cuestan mucho. Se decide al programar; si cuestan mucho, se prescinde.
 - **Webcam en pantalla:** sí, en una ventanita, para que el jugador vea si se le reconoce.
 
 ### Objetivo de gráficos (fijado en sesión 1)
-- **Fondo:** fijo. Puede haber 1–2 fondos distintos (solo estéticos, p. ej. uno al azar por partida).
+- **Fondo:** fijo, uno solo (decidido).
 - **Oponente:**
-  - **2–3 poses de espera** (sin capas de manos): esperando (manos no visibles), mano en la mesa, manos detrás de la cabeza…
+  - **2–3 poses de espera** (confirmado) (sin capas de manos): esperando (manos no visibles), mano en la mesa, manos detrás de la cabeza…
   - **1 pose de acción** por capas: cuerpo base + mano 1 con una de las 5 cartas + mano 2 con uno de los 5 gestos.
   - **Cara:** capa aparte con varias emociones, común a todas las poses.
-- **Piezas a dibujar (aprox.):** 3–4 poses de cuerpo, 5 manos con carta, 5 manos con gesto, 4–6 caras, 1–2 fondos.
+- **Piezas a dibujar (aprox.):** 3–4 poses de cuerpo, 5 manos con carta, 5 manos con gesto, 4–6 caras, 1 fondo.
 - **Reglas de dibujo para que encaje:**
   1. Todas las piezas al mismo tamaño de lienzo y alineadas (cada capa se coloca encima sin ajustar).
   2. La cabeza en la misma posición en todas las poses (si cambia, caras propias para esa pose o desplazarlas por código).
@@ -71,14 +71,13 @@ El proyecto se divide en dos grandes apartados: **videojuego** y **visión por c
   - Posibles confusiones a vigilar en la evaluación: puño ↔ pulgar arriba (solo cambia el pulgar) e índice arriba ↔ "te quiero" (comparten el índice estirado).
 - **Hardware:** webcam del portátil o el móvil como webcam (p. ej. apps tipo DroidCam/Iriun). Gráfica AMD Radeon (sin CUDA): si se entrena una red, hacerlo en CPU o con modelos ligeros.
 - **Pendientes de visión:**
-  - Técnicas: en clase se ha visto segmentación y contornos. MediaPipe (puntos de la mano) está permitido.
   - Diseño de las cartas (colores y símbolos): se decide junto con Claude.
   - Estabilidad: que solo cuente una detección si se mantiene ~1 s (decidir al programar).
-  - Base de datos: quién aparece (solo Alberto o varias personas), fondos y luces (decidir al programar).
+  - Base de datos de gestos: se entrena con imágenes propias (decidido).
   - Cómo se hace el código y la base de datos de cartas y gestos.
 
 ## Investigación (sesión 1) y propuesta técnica
-Propuesta de Claude, pendiente de depurar con Alberto.
+Decidido: se sigue la recomendación global (gestos con opción B).
 
 ### Animaciones y capas (Pygame)
 - **Animación = secuencia de frames.** Se guardan en un *sprite sheet* (una imagen con todos los frames) y el juego cambia de frame cada X ms. Método estándar, con tutoriales sencillos.
@@ -118,9 +117,8 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - Piedra-papel-tijera: https://github.com/freestyleabg/computer-vision-rock-paper-scissors · https://yashd-dev.vercel.app/posts/post1-rps · https://www.instructables.com/Rock-Paper-Scissors-With-Open-CV · https://awesome.ecosyste.ms/projects/github.com%2Fjakub-nowicki%2Frock-paper-scissors
 - Cartas: https://forum.opencv.org/t/using-template-matching-to-identify-playing-cards/3390 · https://forum.opencv.org/t/recognizing-playing-cards/17403 · https://www.preprints.org/manuscript/202301.0030
 
-## Logística (TEMPORAL, pendiente de confirmar)
-"Decisión provisional: Alberto aún tiene que valorar si hace una partición de Linux."
-- **Dónde programar:** Windows directamente. VirtualBox descartado (mal acceso a la webcam y poca potencia). Partición Linux: no necesaria, pero pendiente de decidir.
+## Logística (decidida)
+- **Dónde programar:** Windows (decidido). VirtualBox y partición Linux descartados.
 - **Herramientas:** VS Code + Python + entorno virtual (venv). En clase se usa Python + OpenCV.
 - **Repositorio:** el código vive en este repo de GitHub; se clona en el PC y se trabaja ahí.
 - **Qué es el juego:** un programa Python local, sin internet ni servidor. Sin motor gráfico (nada de Unity/Godot): se usa la librería **Pygame** para la ventana y el dibujo.
@@ -133,18 +131,21 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - **Estructura del código (propuesta):** archivos separados para visión, lógica e interfaz, para hacerlos y probarlos en sesiones distintas.
 
 ## Preguntas abiertas
-1. ¿Partición con Linux o Windows? (Ver "Logística (TEMPORAL)"; Alberto lo está pensando. Recomendación de Claude: Windows.)
-2. Formato y tamaño del pixel art, y fondo: se deciden en la sesión de pixel art.
-3. Animaciones: cuáles y cuántas, según lo que cueste programarlas.
-4. El diseño de las cartas.
+1. Formato y tamaño del pixel art: se decide en la sesión de pixel art.
+2. Animaciones: cuáles y cuántas, según lo que cueste programarlas.
+3. El diseño de las cartas.
+4. Estabilidad de la detección (~1 s): se decide al programar.
+5. Cómo se hace el código y la base de datos de las cartas.
 
 ## Decisiones tomadas
 - Cartas de diseño propio, muy distintivas.
 - La jugada se confirma sola al detectar carta y gesto (orden indiferente).
 - Gestos fijos: atacar = puño, defender = palma, curarse = pulgar arriba, huir = "te quiero" 🤟, cargar = índice arriba.
-- Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
+- Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1 fondo fijo, ya decidido).
 - Webcam visible en pantalla en una ventanita.
-- MediaPipe permitido.
+- MediaPipe permitido y decidido.
+- Programar en Windows.
+- Base de datos de gestos con imágenes propias.
 - Gestos: se entrenan con MediaPipe + clasificador propio con nuestros gestos (opción B). Alberto ya tiene código para ello; se irá subiendo al repo.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
