@@ -48,8 +48,8 @@ def resolver(jugador, maquina):
     if ok_elem and ok_acc:
         return 25, 0, True
     if ok_elem or ok_acc:
-        return 5, 1, False
-    return -10, 2, False
+        return 10, 1, False
+    return 0, 2, False
 
 
 def main():
