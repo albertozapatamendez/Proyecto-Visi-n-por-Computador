@@ -7,6 +7,7 @@ Estudiante universitario, principiante con IA y Claude Code. Responder siempre e
 4. Avisar y preguntar antes de tareas costosas (renderizar, mucho razonamiento, investigación larga).
 5. Corregir sin miedo y proponer la mejor opción, aunque implique otra app o herramienta.
 6. En todas las respuestas llamame por mi nombre, por ejemplo: "Alberto, ...."
+7. Al terminar cada sesión: actualizar "Avances" y el estado de la parte en "Plan de trabajo", y subir los cambios a `main`.
 
 Hay que ampliar este CLAUDE.md para utilizarlo durante todo el proyecto, definiendo objetivos, actualizando avances y recopilando el trabajo hecho.
 
@@ -144,8 +145,22 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
 - Webcam visible en pantalla en una ventanita.
 - MediaPipe permitido.
+- Gestos: se entrenan con MediaPipe + clasificador propio con nuestros gestos (opción B). Alberto ya tiene código para ello; se irá subiendo al repo.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
 - Grupo y fecha de entrega: no relevantes para el scope.
 
+## Plan de trabajo (partes y estado)
+Estados: ⬜ pendiente · 🟡 en curso · ✅ hecho. A, B y C se pueden hacer en paralelo; D y E al final.
+
+| Parte | Contenido | Estado |
+|---|---|---|
+| **0. Entorno** | Python, VS Code, venv, librerías, clonar repo, probar webcam | ⬜ |
+| **A. Creación gráfica** (Alberto) | Pixel art (poses, manos con carta/gesto, caras, fondos) · Diseño e impresión de las 5 cartas | ⬜ |
+| **B. Programación del juego** | Lógica (reglas, vidas, puntos, racha, máquina) · Interfaz Pygame (capas, animaciones, ventanita webcam; jugable con teclado) | ⬜ |
+| **C. Programación de la visión** | Gestos: base de datos de puntos con MediaPipe + entrenar clasificador · Cartas: contornos + color | ⬜ |
+| **D. Integración** | Juntar juego y visión, estabilidad ~1 s | ⬜ |
+| **E. Evaluación y entrega** | % acierto, matriz de confusión, pruebas con luces/personas · Memoria y presentación | ⬜ |
+| **Scope (sesión 1)** | Definición del proyecto | ✅ |
+
 ## Avances
-- Sesión 1 (scope): lectura del repositorio, objetivo general, apartados videojuego y visión, logística, requisitos de la asignatura e investigación técnica. En curso (falta dividir el trabajo en bloques).
+- Sesión 1 (scope): lectura del repositorio, objetivo general, apartados videojuego y visión, logística, requisitos de la asignatura, investigación técnica, gestos definidos y plan de trabajo por partes. Hecho.
