@@ -144,6 +144,8 @@ Propuesta de Claude, pendiente de depurar con Alberto.
 - Gestos fijos: atacar = puño, defender = palma, curarse = pulgar arriba, huir = "te quiero" 🤟, cargar = índice arriba.
 - Gráficos: ver "Objetivo de gráficos" (2–3 poses de espera + 1 pose de acción por capas + cara por capas + 1–2 fondos fijos).
 - Webcam visible en pantalla en una ventanita.
+- Puntuación (cambia el PDF): fallar no resta puntos, solo vidas. Dos bien +25; una bien +10 y −1 vida; ninguna 0 y −2 vidas.
+- Primer borrador del juego por terminal en `parte_juego/juego.py` (teclas: elementos v/m/e/r/h, acciones a/d/c/h/g).
 - MediaPipe permitido.
 - Gestos: se entrenan con MediaPipe + clasificador propio con nuestros gestos (opción B). Alberto ya tiene código para ello; se irá subiendo al repo.
 - Pixel art: lo dibuja Alberto a partir de su modelo ya hecho (solo faltan los estados). Claude prepara la lista de piezas y lo integra en el juego.
@@ -161,7 +163,7 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ hecho. A, B y C se pueden hacer e
 |---|---|---|
 | **0. Entorno** | Python, VS Code, venv, librerías, clonar repo, probar webcam | ⬜ |
 | **A. Creación gráfica** (Alberto) | Pixel art (poses, manos con carta/gesto, caras, fondos) · Diseño e impresión de las 5 cartas | ⬜ |
-| **B. Programación del juego** | Lógica (reglas, vidas, puntos, racha, máquina) · Interfaz Pygame (capas, animaciones, ventanita webcam; jugable con teclado) | ⬜ |
+| **B. Programación del juego** | Lógica (reglas, vidas, puntos, racha, máquina) · Interfaz Pygame (capas, animaciones, ventanita webcam; jugable con teclado) | 🟡 (lógica en terminal hecha, sin probar) |
 | **C. Programación de la visión** | Gestos: base de datos de puntos con MediaPipe + entrenar clasificador · Cartas: contornos + color | ⬜ |
 | **D. Integración** | Juntar juego y visión, estabilidad ~1 s | ⬜ |
 | **E. Evaluación y entrega** | % acierto, matriz de confusión, pruebas con luces/personas · Memoria y presentación | ⬜ |
@@ -169,3 +171,4 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ hecho. A, B y C se pueden hacer e
 
 ## Avances
 - Sesión 1 (scope): lectura del repositorio, objetivo general, apartados videojuego y visión, logística, requisitos de la asignatura, investigación técnica, gestos definidos y plan de trabajo por partes. Hecho.
+- Sesión 2 (juego básico): borrador del juego por terminal en `parte_juego/juego.py` (reglas, máquina al azar, vidas, puntos, racha). Puntuación cambiada: fallar no resta puntos. Sin probar aún.
